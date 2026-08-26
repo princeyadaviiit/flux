@@ -1,0 +1,19 @@
+{
+  "name": "flux-experiments",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Phase 0 spike experiments",
+  "type": "module",
+  "scripts": {
+    "test:patch-bridge": "node patch-bridge-spike.js",
+    "test:token": "node approval-token-spike.js",
+    "test:bundle": "node bundle-size-spike.js",
+    "test:parser": "node parser-spike.js"
+  },
+  "dependencies": {
+    "yjs": "^13.6.0"
+  },
+  "devDependencies": {
+    "vitest": "^2.0.0"
+  }
+}
