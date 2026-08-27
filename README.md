@@ -12,8 +12,8 @@ Flux solves three core problems when building LLM-powered interactive web apps:
 
 ## Project Status
 
-**Current Phase:** Phase 1 - Transport & Connectivity (Week 1)  
-**Status:** In Development (Pre-Alpha)
+**Current Phase:** Phase 1 - Transport & Connectivity (Complete)  
+**Status:** Production-Ready Transport Layer
 
 ### Completed
 - ✅ Phase 0: All validation spikes successful
@@ -21,13 +21,16 @@ Flux solves three core problems when building LLM-powered interactive web apps:
   - HMAC approval tokens validated
   - Yjs bundle size acceptable
   - Custom parser approach decided
-- ✅ Phase 1 Week 1: FluxEnvelope protocol + SSE skeleton
-  - FluxEnvelope schema and event types
-  - SSE Client with auto-reconnect
-  - SSE Server with event replay
+- ✅ Phase 1: Complete bidirectional transport layer
+  - FluxEnvelope protocol with 10 event types
+  - SSE Client/Server with auto-reconnect
+  - WebSocket Client/Server with message queuing
+  - FluxTransport unified API
+  - Multiplexed event handling (no head-of-line blocking)
+  - Comprehensive test suite and examples
 
-### In Progress
-- 🔄 Phase 1 Week 2-4: WebSocket + unified FluxTransport API
+### Next
+- 🔜 Phase 2 (Weeks 5-8): State synchronization with Yjs CRDT
 
 ## Architecture
 

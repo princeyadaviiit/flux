@@ -1,8 +1,8 @@
 # Flux Development Progress Tracker
 
 **Last Updated:** 2026-08-27  
-**Current Phase:** Phase 0 — Spike & Validation  
-**Overall Status:** Starting implementation
+**Current Phase:** Phase 1 — Transport & Connectivity (COMPLETE)  
+**Overall Status:** Phase 0 complete, Phase 1 complete, ready for Phase 2
 
 ---
 
@@ -126,25 +126,28 @@
 
 ## Next Session Pickup Points
 
-**Phase 0 Status:** ✅ COMPLETE
+**Phase 1 Status:** ✅ COMPLETE
 
-**Ready to Begin:** Phase 1 — Transport & Connectivity (Weeks 1-4)
+**Ready to Begin:** Phase 2 — State Synchronization (Weeks 5-8)
 
-**To Resume:**
-1. Review Phase 0 summary document at `docs/PHASE-0-SUMMARY.md`
-2. Check `experiments/` folder for validated prototypes:
-   - `patch-bridge-spike.js` - PatchBridge reference implementation
-   - `approval-token-spike.js` - HMAC token reference implementation
-   - `bundle-size-spike.js` - Bundle size analysis
-   - `parser-spike.js` - Parser decision analysis
-3. Begin Phase 1 by creating `packages/core/src/transport/` structure
-4. Reference PHASES.md for Phase 1 week-by-week breakdown
+**Phase 1 Accomplishments:**
+- Complete bidirectional transport layer (SSE + WebSocket)
+- Unified FluxTransport API
+- Multiplexed event handling
+- Auto-reconnection with message queuing
+- Comprehensive test suite and examples
 
-**Phase 1 Focus Areas:**
-- Week 1: `FluxEnvelope` schema + SSE client/server skeleton
-- Week 2: WebSocket client/server + unified `FluxTransport` API
-- Week 3: Multiplexing + reconnect/resume logic
-- Week 4: Load testing under interleaved event types
+**To Resume Phase 2:**
+1. Review Phase 1 summary at `docs/PHASE-1-SUMMARY.md`
+2. Reference Phase 0 PatchBridge spike at `experiments/patch-bridge-spike.js`
+3. Begin implementing FluxStore wrapping Y.Doc per TRD §4.2
+4. Reference PHASES.md for Phase 2 week-by-week breakdown
+
+**Phase 2 Focus Areas:**
+- Week 5: FluxStore wrapping Y.Doc, schema mapping conventions
+- Week 6: PatchBridge implementation (translation table validated in Phase 0)
+- Week 7: Server→agent compact diff derivation, state-vector resync
+- Week 8: Concurrency fuzz testing, integration tests
 
 **Files to Check:**
 - `/experiments/` — spike prototypes
