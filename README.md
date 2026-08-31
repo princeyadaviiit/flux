@@ -1,21 +1,42 @@
-# Flux (FluxMesh)
+# FluxMesh
 
+[![npm version](https://img.shields.io/npm/v/@fluxmesh/core.svg?color=blue)](https://www.npmjs.com/package/@fluxmesh/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Release: v1.1 Production & Hardened](https://img.shields.io/badge/Release-v1.1%20Hardened-green.svg)]()
+[![Release: v0.1.1 Production & Hardened](https://img.shields.io/badge/Release-v0.1.1%20Hardened-green.svg)]()
 [![Tests: 130/130 Passed](https://img.shields.io/badge/Tests-130%2F130%20Passing-brightgreen.svg)]()
 
-**Framework-agnostic library for building Agentic AI-Native web applications.**
+**The framework-agnostic TypeScript engine for building Agentic AI-Native web applications.**
 
-Flux solves the hardest challenges when building LLM-powered interactive web applications:
-1. **Streaming UI** — Progressive rendering of LLM-generated UI as tokens arrive with bounded repair heuristics and mandatory XSS sanitization.
-2. **Three-Way State Sync** — CRDT-based convergence between client, server, and autonomous agents using RFC 6902 JSON Patches over the wire.
-3. **Safe Autonomy (HITL v1 & v2)** — Cryptographically enforced Human-In-The-Loop approval gates with HMAC-SHA256 and ECDSA (P-256) asymmetric key signatures with instant nonce burning.
+FluxMesh bridges autonomous AI agents with modern web interfaces across **React, Vue, Svelte, Solid, and Vanilla TypeScript**.
+
+---
+
+## 📚 Complete Documentation & Guide
+
+👉 **[Read the Full Documentation & Architecture Manual (docs/DOCUMENTATION.md)](./docs/DOCUMENTATION.md)**
+
+Everything you need to build production-grade agentic applications:
+- **[System Architecture & Data Flow](./docs/DOCUMENTATION.md#2-system-architecture--data-flow)**
+- **[4 Core Pillars In-Depth](./docs/DOCUMENTATION.md#4-deep-dive-into-the-4-core-pillars)**:
+  - 1. *Bidirectional Transport Layer* (SSE, WebSockets, Stream Diagnostics)
+  - 2. *Three-Way State Sync* (Yjs CRDT, RFC 6902 JSON Patches)
+  - 3. *Streaming Generative UI & Sanitization* (Partial JSON repair, DOMPurify XSS defense)
+  - 4. *Safe Autonomy & HITL* (HMAC-SHA256 & ECDSA P-256 single-use nonces)
+- **[Framework Quick Starts](./docs/DOCUMENTATION.md#5-framework-adapters--step-by-step-ui-integration)**:
+  - [React (`@fluxmesh/react`)](./docs/DOCUMENTATION.md#react-fluxmeshreact)
+  - [Vue 3 (`@fluxmesh/vue`)](./docs/DOCUMENTATION.md#vue-3-fluxmeshvue)
+  - [Svelte (`@fluxmesh/svelte`)](./docs/DOCUMENTATION.md#svelte-fluxmeshsvelte)
+  - [SolidJS (`@fluxmesh/solid`)](./docs/DOCUMENTATION.md#solidjs-fluxmeshsolid)
+  - [Vanilla TypeScript (`@fluxmesh/core`)](./docs/DOCUMENTATION.md#vanilla-typescript-fluxmeshcore)
+- **[Backend Integration Guide](./docs/DOCUMENTATION.md#6-backend-integration-guide)** (Express, FastAPI, Next.js)
+- **[Real-World Enterprise Use Cases](./docs/DOCUMENTATION.md#7-real-world-enterprise-use-cases--case-studies)**
+- **[Comprehensive API Reference](./docs/DOCUMENTATION.md#8-comprehensive-api-reference)**
 
 ---
 
 ## ⚡ Quick Start (< 2 Minutes)
 
-Scaffold a new Flux application with your framework of choice:
+Scaffold a new FluxMesh application with your framework of choice:
 
 ```bash
 # Interactive scaffolding
@@ -38,17 +59,16 @@ npm run dev
 
 ## 📦 Monorepo Architecture
 
-```
-packages/
-├── core/               # @fluxmesh/core (TypeScript Core Subsystems)
-├── react/              # @fluxmesh/react (React 18/19 Hooks)
-├── vue/                # @fluxmesh/vue (Vue 3 Composables)
-├── svelte/             # @fluxmesh/svelte (Svelte Stores)
-├── solid/              # @fluxmesh/solid (SolidJS Primitives)
-├── cli/                # @fluxmesh/cli (create-fluxmesh + Vite Plugin)
-└── conformance-tests/  # @fluxmesh/conformance-tests (Cross-adapter behavioral suite)
-playground/             # Interactive Browser REPL Playground
-```
+| Package | npm Package Name | Description |
+|---|---|---|
+| Core Subsystem | **`@fluxmesh/core`** | TypeScript core (`FluxTransport`, `FluxStore`, `FluxRenderer`, HITL) |
+| React Adapter | **`@fluxmesh/react`** | React 18/19 hooks (`useFluxAgent`, `useFluxRenderer`) |
+| Vue 3 Adapter | **`@fluxmesh/vue`** | Vue 3 composables (`useFluxAgent`, `useFluxRenderer`) |
+| Svelte Adapter | **`@fluxmesh/svelte`** | Svelte stores (`createFluxAgent`, `createFluxRenderer`) |
+| SolidJS Adapter | **`@fluxmesh/solid`** | SolidJS primitives (`createFluxAgent`, `createFluxRenderer`) |
+| Scaffolding Tool | **`@fluxmesh/cli`** | CLI generator + Vite plugin (`fluxPlugin`) |
+| Global Starter Bin | **`create-fluxmesh`** | Enables `npm create fluxmesh@latest` |
+| Conformance Suite | **`@fluxmesh/conformance-tests`** | Cross-adapter behavioral test suite |
 
 ---
 
@@ -62,46 +82,24 @@ npm run playground
 
 ---
 
-## 📖 Documentation
-
-- **[Developer Guide & API Reference](./docs/GUIDE.md)** — Complete end-to-end tutorial & recipes
-- **[Security Policy & Invariants](./SECURITY.md)** — Cryptographic guarantees & vulnerability reporting
-- **[PRD.md](./PRD.md)** — Product requirements & vision
-- **[TRD.md](./TRD.md)** — Technical specifications & protocol design
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** — System architecture
-- **[RULES.md](./RULES.md)** — Architectural invariants & constraints
-- **[CONTRIBUTING.md](./CONTRIBUTING.md)** — Contributing guidelines & standards
-- **[docs/PHASE-5-SUMMARY.md](./docs/PHASE-5-SUMMARY.md)** — Phase 5 Hardening & Ecosystem summary
-- **[docs/MEMORY.md](./docs/MEMORY.md)** — Development progress tracker
-
----
-
 ## 🧪 Testing & Validation
 
 ```bash
 # Run all 130 tests across the monorepo
 npm test
-
-# Run tests in watch mode
-npx vitest
 ```
 
 ```
  Test Files  12 passed (12)
       Tests  130 passed (130)
-   Duration  7.89s
+   Duration  8.28s
 ```
 
 ---
 
-## 🗺️ Roadmap & Complete Milestones
+## 🛡️ Security Policy & Invariants
 
-- ✅ **Phase 0:** Validation Spikes & Technical Decision Records
-- ✅ **Phase 1:** Bidirectional Transport Layer (`FluxTransport`, SSE, WebSocket)
-- ✅ **Phase 2:** State Synchronization Engine (`FluxStore` with Yjs CRDT + `PatchBridge`)
-- ✅ **Phase 3:** Generative UI Renderer, Sanitizer, HITL & Framework Adapters (Vue, Svelte, Solid)
-- ✅ **Phase 4:** CLI Scaffolding Tool (`create-fluxmesh`), Vite Plugin, Playground & v1.0 Launch
-- ✅ **Phase 5:** Hardening, React Adapter (`@fluxmesh/react`), ECDSA Asymmetric Signing (HITL v2), Stream Diagnostics Telemetry & Security Policy (v1.1)
+See **[SECURITY.md](./SECURITY.md)** for our formal vulnerability disclosure policy, cryptographic guarantees, and security invariants.
 
 ---
 
@@ -109,4 +107,4 @@ npx vitest
 
 MIT License - see [LICENSE](./LICENSE) for details.
 
-**Built with ❤️ by the Flux Team**
+**Built with ❤️ by the FluxMesh Team**
