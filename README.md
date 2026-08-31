@@ -1,7 +1,7 @@
 # Flux
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Phase: 2 - State Sync](https://img.shields.io/badge/Phase-2%20State%20Sync-blue.svg)]()
+[![Phase: 3 - Generative UI & Adapters](https://img.shields.io/badge/Phase-3%20Generative%20UI%20%26%20Adapters-green.svg)]()
 
 **Framework-agnostic library for building Agentic AI-Native web applications.**
 
@@ -12,34 +12,27 @@ Flux solves three core problems when building LLM-powered interactive web apps:
 
 ## Project Status
 
-**Current Phase:** Phase 1 - Transport & Connectivity (Complete)  
-**Status:** Production-Ready Transport Layer
+**Current Phase:** Phase 3 - Generative UI Renderer, HITL & Adapters (Complete)  
+**Status:** Production-Ready Core Subsystems & Framework Adapters
 
 ### Completed
-- ✅ Phase 0: All validation spikes successful
-  - PatchBridge (JSON Patch ↔ Yjs) validated
-  - HMAC approval tokens validated
-  - Yjs bundle size acceptable
-  - Custom parser approach decided
-- ✅ Phase 1: Complete bidirectional transport layer
-  - FluxEnvelope protocol with 10 event types
-  - SSE Client/Server with auto-reconnect
-  - WebSocket Client/Server with message queuing
-  - FluxTransport unified API
-  - Multiplexed event handling (no head-of-line blocking)
-  - Comprehensive test suite and examples
+- ✅ **Phase 0:** All validation spikes successful (PatchBridge, HMAC tokens, bundle size, parser)
+- ✅ **Phase 1:** Complete bidirectional transport layer (SSE + WebSocket unified API, multiplexing)
+- ✅ **Phase 2:** State synchronization engine (`FluxStore` with Yjs CRDT + `PatchBridge` RFC 6902)
+- ✅ **Phase 3:** Generative UI renderer (`StreamingUIParser`, `FluxRenderer`), mandatory `sanitize()`, `AgentHITL` approval subsystem, framework adapters (`@flux/vue`, `@flux/svelte`, `@flux/solid`), and shared `@flux/conformance-tests` suite (113/113 tests passing)
 
 ### Next
-- 🔜 Phase 2 (Weeks 5-8): State synchronization with Yjs CRDT
+- 🔜 **Phase 4 (Weeks 13-16):** Developer experience, scaffolding CLI (`create-flux-app`), bundler plugins, interactive playground, and launch
 
 ## Architecture
 
 ```
-@flux/core         Framework-agnostic TypeScript core
-@flux/vue          Vue 3 adapter (planned)
-@flux/svelte       Svelte adapter (planned)
-@flux/solid        SolidJS adapter (planned)
-@flux/cli          Scaffolding tool (planned)
+packages/
+├── core/                   # @flux/core (TypeScript Core Subsystems)
+├── vue/                    # @flux/vue (Vue 3 Composables)
+├── svelte/                 # @flux/svelte (Svelte Stores)
+├── solid/                  # @flux/solid (SolidJS Primitives)
+└── conformance-tests/      # @flux/conformance-tests (Shared behavioral test suite)
 ```
 
 ## Documentation
@@ -126,10 +119,10 @@ MIT License - see [LICENSE](./LICENSE) for details.
 ## Roadmap
 
 - **Phase 0 (Complete):** Validation spikes
-- **Phase 1 (Weeks 1-4):** Transport layer ← *We are here*
-- **Phase 2 (Weeks 5-8):** State synchronization
-- **Phase 3 (Weeks 9-12):** Generative renderer + adapters
-- **Phase 4 (Weeks 13-16):** CLI, docs, launch
+- **Phase 1 (Complete):** Bidirectional transport layer
+- **Phase 2 (Complete):** State synchronization with Yjs CRDT
+- **Phase 3 (Complete):** Generative UI renderer, HITL & framework adapters
+- **Phase 4 (Weeks 13-16):** CLI, bundler plugins, docs, launch ← *We are here*
 - **Phase 5 (Post-v1):** Hardening, ecosystem growth
 
 ---

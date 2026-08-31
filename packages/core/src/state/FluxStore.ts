@@ -198,7 +198,7 @@ export class FluxStore {
     });
   }
 
-  private handleYjsUpdate = (update: Uint8Array, origin: any): void => {
+  private handleYjsUpdate = (_update: Uint8Array, _origin: any): void => {
     // Notify observers of state change
     const snapshot = this.getSnapshot();
 

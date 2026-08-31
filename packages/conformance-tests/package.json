@@ -1,0 +1,25 @@
+{
+  "name": "@flux/conformance-tests",
+  "version": "0.1.0",
+  "description": "Shared behavioral conformance test suite for all Flux adapters",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@flux/core": "*",
+    "@flux/vue": "*",
+    "@flux/svelte": "*",
+    "@flux/solid": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "solid-js": "^1.8.18",
+    "svelte": "^4.2.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0",
+    "vue": "^3.4.0"
+  },
+  "license": "MIT"
+}

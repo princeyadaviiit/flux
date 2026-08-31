@@ -11,10 +11,8 @@
  * @packageDocumentation
  */
 
-// Transport layer
+// Core subsystem exports
 export * from './transport';
-
-// Future exports (to be implemented in subsequent phases)
-// export * from './state';      // Phase 2
-// export * from './renderer';   // Phase 3
-// export * from './hitl';       // Phase 3
+export * from './state';
+export * from './renderer';
+export * from './hitl';

@@ -122,7 +122,7 @@ export class FluxWebSocketServer {
   /**
    * Handle new WebSocket connection
    */
-  private handleConnection(ws: WebSocket, req: IncomingMessage): void {
+  private handleConnection(ws: WebSocket, _req: IncomingMessage): void {
     const connectionId = this.generateConnectionId();
 
     // Store connection
@@ -238,7 +238,7 @@ export class FluxWebSocketServer {
    * Broadcast envelope to all connections
    */
   broadcast(envelope: FluxEnvelope, excludeConnectionId?: string): void {
-    this.connections.forEach((ws, connectionId) => {
+    this.connections.forEach((_ws, connectionId) => {
       if (excludeConnectionId && connectionId === excludeConnectionId) {
         return;
       }

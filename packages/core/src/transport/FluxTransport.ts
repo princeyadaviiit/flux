@@ -63,7 +63,7 @@ export class FluxTransport {
   private stateListeners = new Set<StateCallback>();
   private errorListeners = new Set<ErrorCallback>();
 
-  constructor(private options: FluxTransportOptions) {
+  constructor(options: FluxTransportOptions) {
     // Initialize SSE client for receiving
     this.sseClient = new SSEClient({
       url: options.sseUrl,

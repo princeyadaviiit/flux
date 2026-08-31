@@ -168,7 +168,7 @@ export class WebSocketClient {
         this.handleMessage(event);
       };
 
-      this.ws.onerror = (event) => {
+      this.ws.onerror = () => {
         this.emitError(new Error('WebSocket error'));
       };
 

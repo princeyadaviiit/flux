@@ -1,8 +1,8 @@
 # Flux Development Progress Tracker
 
-**Last Updated:** 2026-08-27  
-**Current Phase:** Phase 1 — Transport & Connectivity (COMPLETE)  
-**Overall Status:** Phase 0 complete, Phase 1 complete, ready for Phase 2
+**Last Updated:** 2026-08-31  
+**Current Phase:** Phase 3 — Generative UI Renderer & Adapters (COMPLETE)  
+**Overall Status:** Phase 0 complete, Phase 1 complete, Phase 2 complete, Phase 3 complete, ready for Phase 4 (DX, Packaging & Launch)
 
 ---
 
@@ -15,166 +15,99 @@
 #### 1. JSON Patch → Yjs PatchBridge Prototype
 - **Status:** ✅ COMPLETE
 - **Objective:** Validate that JSON Patch operations can be reliably translated to Yjs operations with correct CRDT convergence under concurrent edits
-- **Progress:**
-  - [x] Basic Yjs setup and testing
-  - [x] Implement translation table (add/remove/replace/move/copy)
-  - [x] Create fuzzed concurrent-edit test suite
-  - [x] Confirm convergence holds under all scenarios
-- **Results:** 9/9 tests passed
+- **Results:** 9/9 tests passed (`experiments/patch-bridge-spike.js`)
 - **Decision:** ✓ Proceed with PatchBridge design from TRD §4.2
-- **Key Findings:**
-  - JSON Patch → Yjs translation is sound
-  - Concurrent edits converge correctly under all test scenarios
-  - LWW (Last-Write-Wins) semantics work as expected for same-path conflicts
-  - Implementation file: `experiments/patch-bridge-spike.js`
 
 #### 2. HMAC Approval Token Scheme Prototype
 - **Status:** ✅ COMPLETE
 - **Objective:** Validate end-to-end approval token flow with replay prevention
-- **Progress:**
-  - [x] Token generation with HMAC-SHA256
-  - [x] Token verification logic
-  - [x] Nonce tracking for replay prevention
-  - [x] TTL expiration handling
-  - [x] Integration test for replay-attempt rejection
-- **Results:** 9/9 tests passed
+- **Results:** 9/9 tests passed (`experiments/approval-token-spike.js`)
 - **Decision:** ✓ Proceed with HMAC token scheme from TRD §4.4
-- **Key Findings:**
-  - Token generation and verification work correctly
-  - Replay prevention is effective
-  - Nonce invalidation is immediate (even on signature failure)
-  - `pauseForApproval()` genuinely blocks execution until approval
-  - Multiple concurrent approvals work independently
-  - Implementation file: `experiments/approval-token-spike.js`
 
 #### 3. Yjs Bundle Size Validation
 - **Status:** ✅ COMPLETE
 - **Objective:** Confirm Yjs bundle size is acceptable for "under 2 minutes to hello world" DX goal
-- **Progress:**
-  - [x] Measure Yjs bundle size
-  - [x] Calculate gzipped size
-  - [x] Estimate cold start time
-  - [x] Evaluate impact on DX goal
-- **Results:** PASSED - Bundle size acceptable
-- **Decision:** ✓ Yjs bundle size is acceptable. Proceed with Yjs as CRDT dependency.
-- **Key Findings:**
-  - Yjs v13.6.32: 300KB raw, 62KB gzipped
-  - Estimated cold start: ~125ms
-  - Only 0.10% of 2-minute DX budget
-  - Industry-standard size for CRDT libraries
-  - Implementation file: `experiments/bundle-size-spike.js`
+- **Results:** PASSED (62KB gzipped, 0.10% of 2-minute DX budget)
+- **Decision:** ✓ Proceed with Yjs as CRDT dependency (`experiments/bundle-size-spike.js`)
 
 #### 4. Partial JSON Parser Decision
 - **Status:** ✅ COMPLETE
 - **Objective:** Decide between hand-rolling parser or adapting existing tolerant-JSON library
-- **Progress:**
-  - [x] Research existing tolerant-JSON libraries
-  - [x] Prototype hand-rolled incremental parser
-  - [x] Compare complexity vs. control trade-offs
-  - [x] Evaluate schema validation integration
-- **Results:** 6/7 prototype tests passed (streaming identified as needing refinement)
-- **Decision:** ✓ Hand-roll a custom incremental parser
-- **Key Findings:**
-  - Existing libraries (jsonrepair, etc.) not designed for streaming
-  - Custom parser: ~5-10KB vs existing ~25KB+
-  - Direct schema validation integration possible
-  - Full control over Flux-specific repair heuristics
-  - Implementation planned for Phase 3, Week 9
-  - Implementation file: `experiments/parser-spike.js`
+- **Results:** Hand-rolled custom streaming parser chosen (~5-10KB, full streaming repair control)
+- **Decision:** ✓ Proceed with custom StreamingUIParser (`experiments/parser-spike.js`)
 
 ---
 
-## Exit Criteria for Phase 0
+## Phase 1: Transport & Connectivity
 
-- [x] All four open questions have written decisions
-- [x] PatchBridge convergence validated with fuzz testing
-- [x] HMAC token scheme proven secure against replay
-- [x] Yjs bundle size confirmed acceptable
-- [x] Parser approach selected with rationale documented
-
-**Status:** ✅ COMPLETE (2026-08-27)
-**Outcome:** All validation spikes successful. Ready to proceed to Phase 1.
+**Goal:** Establish reliable, multiplexed bidirectional communication (PRD FR-1.x)
+- **Status:** ✅ COMPLETE
+- **Deliverables:**
+  - `FluxEnvelope` protocol (10 event types)
+  - `SSEClient` & `SSEServer` with auto-reconnect and `Last-Event-ID` resumption
+  - `WebSocketClient` & `WebSocketServer` with heartbeat and message queuing
+  - Unified `FluxTransport` API with multiplexed subscriber queues (no head-of-line blocking)
+  - 17 unit/integration tests passing
 
 ---
 
-## Key Decisions Made
+## Phase 2: State Synchronization Engine
 
-### Phase 0 (Completed 2026-08-27)
+**Goal:** Solve the three-way state sync problem via CRDTs (PRD FR-2.x)
+- **Status:** ✅ COMPLETE
+- **Deliverables:**
+  - `FluxStore` wrapping Yjs `Y.Doc` with JSON-like interface
+  - `PatchBridge` translating all RFC 6902 operations (`add`, `remove`, `replace`, `move`, `copy`, `test`) to atomic Yjs mutations
+  - Compact diff computation via state vectors
+  - Observable state changes with snapshots
+  - 54 unit tests passing (`FluxStore.test.ts` & `PatchBridge.test.ts`)
+  - Server/client state sync demo in `examples/state-sync-demo.ts`
 
-1. **PatchBridge Architecture (TRD §4.2)**
-   - Decision: JSON Patch as wire format, Yjs for conflict resolution
-   - Rationale: Validation tests confirm convergence under concurrent edits
-   - Impact: Proceed with implementation in Phase 2
+---
 
-2. **HMAC Approval Token Scheme (TRD §4.4)**
-   - Decision: Use HMAC-SHA256 with session secrets for v1
-   - Rationale: Replay prevention validated, execution truly blocks until approval
-   - Impact: Implement in Phase 3; defer WebCrypto asymmetric keys to v2
+## Phase 3: Generative UI Renderer, HITL Subsystem & Framework Adapters
 
-3. **Yjs as CRDT Dependency**
-   - Decision: Yjs is acceptable dependency (62KB gzipped)
-   - Rationale: Only 0.10% of 2-minute DX budget, industry-standard size
-   - Impact: No bundle size concerns for DX goals
-
-4. **Custom Incremental JSON Parser**
-   - Decision: Hand-roll custom parser instead of using existing library
-   - Rationale: Existing libraries not designed for streaming; need ~5-10KB vs ~25KB+
-   - Impact: Implement in Phase 3 Week 9 with property-based fuzz testing
-   - Risk mitigation: Comprehensive test suite + security audit
+**Goal:** Enable safe, dynamic UI rendering from partial streams and human-in-the-loop approval gates (PRD FR-3.x, FR-4.x)
+- **Status:** ✅ COMPLETE (2026-08-31)
+- **Deliverables:**
+  - **`StreamingUIParser` (TRD §4.3):** Incremental JSON parser with bounded repair heuristics (unclosed quotes, bracket stacks, dangling keys, trailing commas), progressive prop diffing, and component discriminant detection.
+  - **`FluxRenderer`:** Component registry with schema validation (partial during streaming, full on completion), automatic rich-text sanitization, and fallback/error rendering on unknown components or validation failures (FR-3.3).
+  - **Mandatory Sanitization (`sanitizer.ts`):** Isomorphic DOMPurify-backed HTML sanitizer enforcing RULES.md §1.2.
+  - **`ApprovalTokenManager` (TRD §4.4):** HMAC-SHA256 signing, TTL validation, and immediate nonce invalidation on any verification attempt (RULES.md §1.4).
+  - **`AgentHITL`:** Server-side `pauseForApproval` execution gating primitive that halts async operations until approved.
+  - **Framework Adapters:** `@flux/vue` (composables), `@flux/svelte` (stores), `@flux/solid` (primitives).
+  - **Conformance Test Suite:** `@flux/conformance-tests` enforcing adapter behavioral parity (RULES.md §1.6).
+  - **Test Coverage:** 113/113 tests passing across 9 test suites.
+  - **Example Demo:** `packages/core/examples/generative-ui-demo.ts`.
 
 ---
 
 ## Next Session Pickup Points
 
-**Phase 2 Status:** ✅ COMPLETE
+**Phase 3 Status:** ✅ COMPLETE
 
-**Ready to Begin:** Phase 3 — Generative UI Renderer (Weeks 9-12)
+**Ready to Begin:** Phase 4 — DX, Packaging, and Launch (Weeks 13-16)
 
-**Phase 2 Accomplishments:**
-- FluxStore wrapping Yjs Y.Doc with JSON-like interface
-- PatchBridge translating JSON Patch to Yjs operations
-- Compact diff computation via state vectors
-- Observable state changes with snapshots
-- 54 comprehensive tests, all passing
-- Complete server/client state sync example
+**Phase 4 Focus Areas:**
+- Week 13: CLI scaffolding tool (`create-flux-app`) with framework templates (Vue, Svelte, Solid, Vanilla TS)
+- Week 14: Vite/Rollup bundler plugin integration
+- Week 15: Developer documentation, interactive examples, API reference
+- Week 16: Interactive REPL playground and launch readiness review
 
-**To Resume Phase 3:**
-1. Review Phase 2 summary at `docs/PHASE-2-SUMMARY.md`
-2. Reference Phase 0 parser spike at `experiments/parser-spike.js`
-3. Begin implementing StreamingUIParser per TRD §4.3
-4. Reference PHASES.md for Phase 3 week-by-week breakdown
-
-**Phase 3 Focus Areas:**
-- Week 9: StreamingUIParser with incremental JSON parsing and repair heuristics
-- Week 10: Progressive schema validation against partial UI schemas
-- Week 11: XSS prevention with mandatory sanitize() for all LLM-authored strings
-- Week 12: Framework adapters (Vue, Svelte, Solid) with conformance tests
-
-**Files to Check:**
-- `/experiments/` — spike prototypes
-- `/docs/MEMORY.md` — this file
-- `PHASES.md` — phase requirements reference
-- `TRD.md` — technical specifications
-- `RULES.md` — architectural constraints
+**Files to Reference:**
+- `docs/PHASE-3-SUMMARY.md` — complete Phase 3 overview
+- `docs/PHASES.md` — phase requirements reference
+- `docs/TRD.md` — technical specifications
+- `docs/RULES.md` — architectural constraints
 
 ---
 
-## Project Setup Completed
+## Overall Test Suite Status
 
-- [x] Directory structure created (`packages/`, `experiments/`, `docs/`)
-- [x] CLAUDE.md created for future Claude Code sessions
-- [x] MEMORY.md tracking system initialized
-- [x] Root package.json created
-- [x] Experiments package.json created
-- [x] Phase 0 dependencies installed (Yjs, Vitest)
-- [x] Phase 0 validation spikes completed
-- [ ] Monorepo tooling setup (Turborepo)
-- [ ] TypeScript configuration
-- [ ] Package structure for @flux/core
-- [ ] Testing infrastructure (Vitest, Playwright)
+```
+ Test Files  9 passed (9)
+      Tests  113 passed (113)
+   Duration  10.04s
+```
 
----
-
-## Notes & Blockers
-
-_(None yet)_
+All subsystems passing with 100% test success rate.

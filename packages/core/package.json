@@ -30,12 +30,17 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "dompurify": "^3.4.14",
     "fast-json-patch": "^3.1.1",
+    "jsdom": "^30.0.1",
     "ws": "^8.18.0",
     "yjs": "^13.6.0"
   },
   "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^20.0.0",
+    "@types/ws": "^8.18.1",
     "tsup": "^8.0.0",
     "typescript": "^5.5.0",
     "vitest": "^2.0.0"

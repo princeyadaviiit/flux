@@ -4,7 +4,7 @@
  */
 
 import { IncomingMessage, ServerResponse } from 'http';
-import { FluxEnvelope, FluxEventType } from './protocol';
+import { FluxEnvelope } from './protocol';
 
 export interface SSEServerOptions {
   /** Path to handle SSE connections (default: '/events') */
@@ -132,7 +132,7 @@ export class SSEServer {
    * Broadcast envelope to all connections
    */
   broadcast(envelope: FluxEnvelope): void {
-    this.connections.forEach((res, connectionId) => {
+    this.connections.forEach((_res, connectionId) => {
       this.sendToConnection(connectionId, envelope);
     });
   }

@@ -11,12 +11,18 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "composite": true,
-    "incremental": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@flux/core": ["packages/core/src/index.ts"],
+      "@flux/core/*": ["packages/core/src/*"],
+      "@flux/vue": ["packages/vue/src/index.ts"],
+      "@flux/svelte": ["packages/svelte/src/index.ts"],
+      "@flux/solid": ["packages/solid/src/index.ts"]
+    }
   }
 }

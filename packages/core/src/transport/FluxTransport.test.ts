@@ -4,8 +4,8 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { FluxTransport } from '../src/transport/FluxTransport';
-import { FluxEnvelopeFactory } from '../src/transport/protocol';
+import { FluxTransport } from './FluxTransport';
+import { FluxEnvelopeFactory } from './protocol';
 
 describe('FluxTransport', () => {
   let transport: FluxTransport;

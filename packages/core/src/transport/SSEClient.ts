@@ -166,7 +166,7 @@ export class SSEClient {
         this.handleMessage(event);
       };
 
-      this.eventSource.onerror = (event) => {
+      this.eventSource.onerror = () => {
         this.handleError();
       };
     } catch (error) {
