@@ -1,7 +1,7 @@
 # Flux
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Phase: 1 - Transport](https://img.shields.io/badge/Phase-1%20Transport-blue.svg)]()
+[![Phase: 2 - State Sync](https://img.shields.io/badge/Phase-2%20State%20Sync-blue.svg)]()
 
 **Framework-agnostic library for building Agentic AI-Native web applications.**
 

@@ -126,28 +126,29 @@
 
 ## Next Session Pickup Points
 
-**Phase 1 Status:** ✅ COMPLETE
+**Phase 2 Status:** ✅ COMPLETE
 
-**Ready to Begin:** Phase 2 — State Synchronization (Weeks 5-8)
+**Ready to Begin:** Phase 3 — Generative UI Renderer (Weeks 9-12)
 
-**Phase 1 Accomplishments:**
-- Complete bidirectional transport layer (SSE + WebSocket)
-- Unified FluxTransport API
-- Multiplexed event handling
-- Auto-reconnection with message queuing
-- Comprehensive test suite and examples
+**Phase 2 Accomplishments:**
+- FluxStore wrapping Yjs Y.Doc with JSON-like interface
+- PatchBridge translating JSON Patch to Yjs operations
+- Compact diff computation via state vectors
+- Observable state changes with snapshots
+- 54 comprehensive tests, all passing
+- Complete server/client state sync example
 
-**To Resume Phase 2:**
-1. Review Phase 1 summary at `docs/PHASE-1-SUMMARY.md`
-2. Reference Phase 0 PatchBridge spike at `experiments/patch-bridge-spike.js`
-3. Begin implementing FluxStore wrapping Y.Doc per TRD §4.2
-4. Reference PHASES.md for Phase 2 week-by-week breakdown
+**To Resume Phase 3:**
+1. Review Phase 2 summary at `docs/PHASE-2-SUMMARY.md`
+2. Reference Phase 0 parser spike at `experiments/parser-spike.js`
+3. Begin implementing StreamingUIParser per TRD §4.3
+4. Reference PHASES.md for Phase 3 week-by-week breakdown
 
-**Phase 2 Focus Areas:**
-- Week 5: FluxStore wrapping Y.Doc, schema mapping conventions
-- Week 6: PatchBridge implementation (translation table validated in Phase 0)
-- Week 7: Server→agent compact diff derivation, state-vector resync
-- Week 8: Concurrency fuzz testing, integration tests
+**Phase 3 Focus Areas:**
+- Week 9: StreamingUIParser with incremental JSON parsing and repair heuristics
+- Week 10: Progressive schema validation against partial UI schemas
+- Week 11: XSS prevention with mandatory sanitize() for all LLM-authored strings
+- Week 12: Framework adapters (Vue, Svelte, Solid) with conformance tests
 
 **Files to Check:**
 - `/experiments/` — spike prototypes
