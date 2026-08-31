@@ -22,7 +22,9 @@
       "@flux/core/*": ["packages/core/src/*"],
       "@flux/vue": ["packages/vue/src/index.ts"],
       "@flux/svelte": ["packages/svelte/src/index.ts"],
-      "@flux/solid": ["packages/solid/src/index.ts"]
+      "@flux/solid": ["packages/solid/src/index.ts"],
+      "@flux/react": ["packages/react/src/index.ts"],
+      "@flux/cli": ["packages/cli/src/index.ts"]
     }
   },
   "exclude": ["**/templates/**", "node_modules", "dist"]

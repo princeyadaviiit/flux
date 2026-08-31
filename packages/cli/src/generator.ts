@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-export type TemplateType = 'vue' | 'svelte' | 'solid' | 'vanilla';
+export type TemplateType = 'react' | 'vue' | 'svelte' | 'solid' | 'vanilla';
 
 export interface ScaffoldOptions {
   projectName: string;
@@ -18,7 +18,7 @@ export interface ScaffoldResult {
 }
 
 export function getAvailableTemplates(): TemplateType[] {
-  return ['vue', 'svelte', 'solid', 'vanilla'];
+  return ['react', 'vue', 'svelte', 'solid', 'vanilla'];
 }
 
 export function scaffoldProject(options: ScaffoldOptions): ScaffoldResult {

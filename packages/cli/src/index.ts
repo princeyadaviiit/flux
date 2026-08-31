@@ -34,18 +34,20 @@ export async function runCLI(args: string[]): Promise<void> {
 
     if (!templateArg || !getAvailableTemplates().includes(templateArg as TemplateType)) {
       console.log('\nSelect a framework template:');
-      console.log('  1) vue      - Vue 3 + @flux/vue');
-      console.log('  2) svelte   - Svelte + @flux/svelte');
-      console.log('  3) solid    - SolidJS + @flux/solid');
-      console.log('  4) vanilla  - Vanilla TypeScript + @flux/core');
+      console.log('  1) react    - React 18/19 + @flux/react');
+      console.log('  2) vue      - Vue 3 + @flux/vue');
+      console.log('  3) svelte   - Svelte + @flux/svelte');
+      console.log('  4) solid    - SolidJS + @flux/solid');
+      console.log('  5) vanilla  - Vanilla TypeScript + @flux/core');
 
-      const choice = await question('Choice (1-4, default: 1): ');
+      const choice = await question('Choice (1-5, default: 1): ');
       const trimmed = choice.trim();
 
-      if (trimmed === '2' || trimmed === 'svelte') templateArg = 'svelte';
-      else if (trimmed === '3' || trimmed === 'solid') templateArg = 'solid';
-      else if (trimmed === '4' || trimmed === 'vanilla') templateArg = 'vanilla';
-      else templateArg = 'vue';
+      if (trimmed === '2' || trimmed === 'vue') templateArg = 'vue';
+      else if (trimmed === '3' || trimmed === 'svelte') templateArg = 'svelte';
+      else if (trimmed === '4' || trimmed === 'solid') templateArg = 'solid';
+      else if (trimmed === '5' || trimmed === 'vanilla') templateArg = 'vanilla';
+      else templateArg = 'react';
     }
 
     rl.close();
@@ -77,10 +79,11 @@ Usage:
   npx create-flux-app [project-name] [options]
 
 Options:
-  -t, --template <template>   Framework template: vue, svelte, solid, vanilla
+  -t, --template <template>   Framework template: react, vue, svelte, solid, vanilla
   -h, --help                  Display this help message
 
 Examples:
+  npm create flux@latest my-react-app --template react
   npm create flux@latest my-agent-app --template vue
   npm create flux@latest my-solid-app --template solid
 `);

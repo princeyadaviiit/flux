@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@flux/react": ["../../../../react/src/index.ts"],
+      "@flux/core": ["../../../../core/src/index.ts"]
+    }
+  },
+  "include": ["src/**/*"]
+}

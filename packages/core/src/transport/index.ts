@@ -9,3 +9,4 @@ export * from './SSEServer';
 export * from './WebSocketClient';
 export * from './WebSocketServer';
 export * from './FluxTransport';
+export * from './StreamDiagnostics';

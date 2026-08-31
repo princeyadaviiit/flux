@@ -9,6 +9,7 @@ import { FluxRenderer, StreamingUIParser, ApprovalTokenManager, sanitize } from 
 import { useFluxRenderer, useFluxAgent } from '@flux/vue';
 import { createFluxRenderer as createSvelteRenderer, createFluxAgent as createSvelteAgent } from '@flux/svelte';
 import { createFluxRenderer as createSolidRenderer, createFluxAgent as createSolidAgent } from '@flux/solid';
+import { useFluxRenderer as useReactRenderer, useFluxAgent as useReactAgent } from '@flux/react';
 
 describe('Shared Conformance Suite: Core Behavioral Guarantees', () => {
   it('CR-1: StreamingUIParser progressively repairs partial JSON without throwing', () => {
@@ -172,5 +173,40 @@ describe('Shared Conformance Suite: SolidJS Adapter (@flux/solid)', () => {
     expect(agent.streamingText()).toBe('');
     expect(typeof agent.connect).toBe('function');
     expect(typeof agent.approve).toBe('function');
+  });
+});
+
+describe('Shared Conformance Suite: React Adapter (@flux/react)', () => {
+  it('RR-1: useFluxRenderer manages generative state and stream completion', () => {
+    const renderer = new FluxRenderer();
+    renderer.register('MetricCard', { component: 'MetricCardTemplate' });
+
+    const { register, addChunk, complete, parser } = useReactRenderer(renderer);
+
+    expect(typeof register).toBe('function');
+    expect(typeof addChunk).toBe('function');
+    expect(typeof complete).toBe('function');
+    expect(parser).toBeDefined();
+
+    addChunk('{"component": "MetricCard", "count": 42');
+    expect(parser.getCurrentState()?.count).toBe(42);
+
+    complete();
+    expect(parser.getStatus()).toBe('complete');
+  });
+
+  it('RR-2: useFluxAgent provides agent connection, streaming, and approval dispatchers', () => {
+    const agent = useReactAgent({
+      sseUrl: 'http://localhost:3000/events',
+      wsUrl: 'ws://localhost:3000/ws',
+      autoConnect: false,
+    });
+
+    expect(agent.isConnected).toBe(false);
+    expect(agent.streamingText).toBe('');
+    expect(typeof agent.connect).toBe('function');
+    expect(typeof agent.approve).toBe('function');
+    expect(typeof agent.reject).toBe('function');
+    expect(agent.transport).toBeDefined();
   });
 });

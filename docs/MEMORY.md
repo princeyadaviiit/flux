@@ -1,8 +1,8 @@
 # Flux Development Progress Tracker
 
 **Last Updated:** 2026-08-31  
-**Current Phase:** Phase 4 — Developer Experience, Packaging & Launch (COMPLETE)  
-**Overall Status:** ✅ v1.0 Production-Ready (Phase 0, 1, 2, 3, and 4 Complete)
+**Current Phase:** Phase 5 — Hardening & Ecosystem Growth (COMPLETE)  
+**Overall Status:** ✅ v1.1 Production-Ready & Enterprise-Hardened (All 5 Phases Complete)
 
 ---
 
@@ -63,7 +63,7 @@
 ## Phase 4: Developer Experience, Packaging & v1.0 Launch
 
 **Goal:** Zero-friction adoption, CLI scaffolding, bundler integration, playground, and release readiness (PRD §4, §9, §13)
-- **Status:** ✅ COMPLETE (2026-08-31)
+- **Status:** ✅ COMPLETE
 - **Deliverables:**
   - **CLI Scaffolding Tool (`@flux/cli` / `create-flux-app`):** `npm create flux@latest [project-name] [--template vue|svelte|solid|vanilla]`.
   - **Starter Templates:** Production-ready templates for Vue 3, Svelte, SolidJS, and Vanilla TypeScript.
@@ -74,22 +74,26 @@
 
 ---
 
-## Phase 5: Post-v1 Roadmap (Future Focus)
+## Phase 5: Hardening & Ecosystem Growth (v1.1)
 
-**Next Milestones for Phase 5:**
-- React framework adapter (`@flux/react`)
-- WebCrypto asymmetric key signing for enterprise HITL approval tokens
-- Multi-region CRDT state relay federation
-- Expanded component catalog and design system integrations
+**Goal:** Post-v1 hardening, enterprise security, React ecosystem integration, and telemetry (PHASES.md Phase 5, TRD §4.4, §7, §8)
+- **Status:** ✅ COMPLETE (2026-08-31)
+- **Deliverables:**
+  - **React Framework Adapter (`@flux/react`):** `useFluxAgent` & `useFluxRenderer` supporting React 18 & 19 concurrent rendering.
+  - **React Scaffolding Template (`templates/react`):** Added to `@flux/cli` (`npm create flux@latest --template react`).
+  - **HITL v2 Asymmetric Approval Scheme (`AsymmetricTokenManager`):** ECDSA (P-256) / SHA-256 asymmetric cryptographic token signing and verification with instant nonce burning.
+  - **Stream Diagnostics & Telemetry (`StreamDiagnostics`):** Real-time monitoring for streaming throughput (tokens/sec), chunk arrival jitter, and parser repair metrics.
+  - **Security Hardening Policy (`SECURITY.md`):** Responsible disclosure policy, threat model, and cryptographic invariant audit guidelines.
+  - **Full Conformance Suite:** 12/12 conformance assertions passed across Core, Vue, Svelte, Solid, and React.
 
 ---
 
 ## Overall Test Suite Status
 
 ```
- Test Files  10 passed (10)
-      Tests  120 passed (120)
-   Duration  7.58s
+ Test Files  12 passed (12)
+      Tests  130 passed (130)
+   Duration  7.89s
 ```
 
-All 120 tests pass across all subsystems with 100% success rate.
+All 130 tests across 12 test suites pass with 100% success rate.

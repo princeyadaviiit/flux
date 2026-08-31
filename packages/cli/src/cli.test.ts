@@ -24,10 +24,31 @@ describe('@flux/cli & Scaffolding Engine', () => {
 
   it('provides available templates', () => {
     const templates = getAvailableTemplates();
+    expect(templates).toContain('react');
     expect(templates).toContain('vue');
     expect(templates).toContain('svelte');
     expect(templates).toContain('solid');
     expect(templates).toContain('vanilla');
+  });
+
+  it('scaffolds a React project correctly', () => {
+    const targetDir = createTempDir('react');
+    const result = scaffoldProject({
+      projectName: 'my-test-react-app',
+      template: 'react',
+      targetDir,
+    });
+
+    expect(result.success).toBe(true);
+    expect(fs.existsSync(path.join(targetDir, 'package.json'))).toBe(true);
+    expect(fs.existsSync(path.join(targetDir, 'vite.config.ts'))).toBe(true);
+    expect(fs.existsSync(path.join(targetDir, 'src/App.tsx'))).toBe(true);
+    expect(fs.existsSync(path.join(targetDir, 'src/main.tsx'))).toBe(true);
+    expect(fs.existsSync(path.join(targetDir, '.gitignore'))).toBe(true);
+
+    const pkg = JSON.parse(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf8'));
+    expect(pkg.name).toBe('my-test-react-app');
+    expect(pkg.dependencies['@flux/react']).toBeDefined();
   });
 
   it('scaffolds a Vue project correctly', () => {
