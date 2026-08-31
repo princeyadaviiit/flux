@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "test": "turbo run test",
+    "test": "vitest run",
+    "playground": "vite playground",
     "lint": "turbo run lint"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ export interface FluxTransportOptions {
   sseUrl: string;
 
   /** WebSocket endpoint URL for client→agent communication */
-  wsUrl: string;
+  wsUrl?: string;
 
   /** Initial Last-Event-ID for SSE resumption */
   lastEventId?: string;
@@ -77,8 +77,9 @@ export class FluxTransport {
     });
 
     // Initialize WebSocket client for sending
+    const wsUrl = options.wsUrl || options.sseUrl.replace(/^http/, 'ws');
     this.wsClient = new WebSocketClient({
-      url: options.wsUrl,
+      url: wsUrl,
       reconnect: {
         enabled: options.reconnect ?? true,
         baseDelay: 250,

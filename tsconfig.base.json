@@ -24,5 +24,6 @@
       "@flux/svelte": ["packages/svelte/src/index.ts"],
       "@flux/solid": ["packages/solid/src/index.ts"]
     }
-  }
+  },
+  "exclude": ["**/templates/**", "node_modules", "dist"]
 }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flux Interactive Playground & REPL</title>
+  <link rel="stylesheet" href="./playground.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="brand">
+      <span class="logo">⚡</span>
+      <span class="title">Flux Playground</span>
+      <span class="badge">v1.0 Ready</span>
+    </div>
+    <div class="nav-actions">
+      <button id="btn-stream-fast" class="btn btn-secondary">⚡ Fast Stream</button>
+      <button id="btn-stream-realistic" class="btn btn-primary">▶ Simulate LLM Stream</button>
+      <button id="btn-reset" class="btn btn-outline">↺ Reset</button>
+    </div>
+  </header>
+
+  <main class="grid-container">
+    <!-- Left Column: Raw Stream & JSON Repair -->
+    <section class="panel panel-left">
+      <div class="panel-header">
+        <h2>1. Streaming Tokens & JSON Repair</h2>
+        <span id="repair-status" class="status-indicator idle">Idle</span>
+      </div>
+      <div class="stream-control">
+        <label for="sample-select">Preset Generative Payload:</label>
+        <select id="sample-select" class="select-input">
+          <option value="metric">Analytics Metric Card</option>
+          <option value="action_card">Action Card with Gated Approval</option>
+          <option value="xss_test">Adversarial XSS Probe</option>
+          <option value="complex_table">Dynamic Data Table</option>
+        </select>
+      </div>
+      <div class="code-box">
+        <div class="code-header">Incoming Raw Stream Buffer</div>
+        <pre id="raw-stream-viewer" class="code-viewer">Waiting to stream...</pre>
+      </div>
+      <div class="code-box">
+        <div class="code-header">Tolerant Parsed JSON (Repaired on-the-fly)</div>
+        <pre id="parsed-json-viewer" class="code-viewer">{}</pre>
+      </div>
+    </section>
+
+    <!-- Center Column: Generative UI Rendering -->
+    <section class="panel panel-center">
+      <div class="panel-header">
+        <h2>2. Generative UI Rendered View</h2>
+        <span id="render-status" class="status-indicator">Awaiting stream</span>
+      </div>
+      <div id="ui-mount" class="ui-canvas">
+        <div class="empty-state">
+          <p>No active generative component.</p>
+          <small>Click "Simulate LLM Stream" to stream UI tokens.</small>
+        </div>
+      </div>
+
+      <!-- HITL Modal Trigger Area -->
+      <div id="hitl-approval-zone" class="hitl-zone hidden">
+        <div class="hitl-card">
+          <div class="hitl-header">
+            <span class="warning-icon">🔒</span>
+            <h3>Human Approval Required</h3>
+          </div>
+          <p id="hitl-description">The agent is requesting permission to execute an action.</p>
+          <div class="hitl-token-meta">
+            <small>Nonce: <code id="hitl-nonce">-</code></small>
+            <small>TTL: <span id="hitl-ttl">120s</span></small>
+          </div>
+          <div class="hitl-actions">
+            <button id="btn-approve" class="btn btn-success">✓ Authorize Action</button>
+            <button id="btn-reject" class="btn btn-danger">✕ Reject Action</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: CRDT State & HITL Verification -->
+    <section class="panel panel-right">
+      <div class="panel-header">
+        <h2>3. State Sync & Security Engine</h2>
+        <span class="status-indicator connected">Yjs Active</span>
+      </div>
+      <div class="state-debugger">
+        <div class="code-header">CRDT FluxStore Snapshot</div>
+        <pre id="crdt-state-viewer" class="code-viewer">{}</pre>
+      </div>
+      <div class="audit-log-box">
+        <div class="code-header">Security & Token Audit Log</div>
+        <div id="audit-log" class="audit-log">
+          <div class="log-entry info">[FluxStore] Ready and initialized with Y.Doc.</div>
+          <div class="log-entry info">[Sanitizer] DOMPurify isomorphic filter loaded.</div>
+          <div class="log-entry info">[ApprovalTokenManager] HMAC-SHA256 initialized.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./playground.ts"></script>
+</body>
+</html>

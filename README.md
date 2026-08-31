@@ -1,130 +1,109 @@
 # Flux
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Phase: 3 - Generative UI & Adapters](https://img.shields.io/badge/Phase-3%20Generative%20UI%20%26%20Adapters-green.svg)]()
+[![Release: v1.0 Production Ready](https://img.shields.io/badge/Release-v1.0%20Production%20Ready-green.svg)]()
+[![Tests: 120/120 Passed](https://img.shields.io/badge/Tests-120%2F120%20Passing-brightgreen.svg)]()
 
 **Framework-agnostic library for building Agentic AI-Native web applications.**
 
-Flux solves three core problems when building LLM-powered interactive web apps:
-1. **Streaming UI** — Progressive rendering of LLM-generated UI as tokens arrive
-2. **Three-way state sync** — CRDT-based convergence between client, server, and agent
-3. **Safe autonomy** — Human-in-the-loop approval gates for sensitive actions
+Flux solves the three hardest problems when building LLM-powered interactive web applications:
+1. **Streaming UI** — Progressive rendering of LLM-generated UI as tokens arrive with bounded repair heuristics and mandatory XSS sanitization.
+2. **Three-Way State Sync** — CRDT-based convergence between client, server, and autonomous agents using RFC 6902 JSON Patches over the wire.
+3. **Safe Autonomy (HITL)** — Cryptographically enforced Human-In-The-Loop approval gates with HMAC-SHA256 signatures and instant nonce burning.
 
-## Project Status
+---
 
-**Current Phase:** Phase 3 - Generative UI Renderer, HITL & Adapters (Complete)  
-**Status:** Production-Ready Core Subsystems & Framework Adapters
+## ⚡ Quick Start (< 2 Minutes)
 
-### Completed
-- ✅ **Phase 0:** All validation spikes successful (PatchBridge, HMAC tokens, bundle size, parser)
-- ✅ **Phase 1:** Complete bidirectional transport layer (SSE + WebSocket unified API, multiplexing)
-- ✅ **Phase 2:** State synchronization engine (`FluxStore` with Yjs CRDT + `PatchBridge` RFC 6902)
-- ✅ **Phase 3:** Generative UI renderer (`StreamingUIParser`, `FluxRenderer`), mandatory `sanitize()`, `AgentHITL` approval subsystem, framework adapters (`@flux/vue`, `@flux/svelte`, `@flux/solid`), and shared `@flux/conformance-tests` suite (113/113 tests passing)
+Scaffold a new Flux application with your framework of choice:
 
-### Next
-- 🔜 **Phase 4 (Weeks 13-16):** Developer experience, scaffolding CLI (`create-flux-app`), bundler plugins, interactive playground, and launch
+```bash
+# Interactive scaffolding
+npm create flux@latest
 
-## Architecture
+# Or specify project name and template directly
+npm create flux@latest my-app --template vue
+npm create flux@latest my-app --template svelte
+npm create flux@latest my-app --template solid
+npm create flux@latest my-app --template vanilla
+
+# Start development with built-in mock agent stream
+cd my-app
+npm install
+npm run dev
+```
+
+---
+
+## 📦 Monorepo Architecture
 
 ```
 packages/
-├── core/                   # @flux/core (TypeScript Core Subsystems)
-├── vue/                    # @flux/vue (Vue 3 Composables)
-├── svelte/                 # @flux/svelte (Svelte Stores)
-├── solid/                  # @flux/solid (SolidJS Primitives)
-└── conformance-tests/      # @flux/conformance-tests (Shared behavioral test suite)
+├── core/               # @flux/core (TypeScript Core Subsystems)
+├── vue/                # @flux/vue (Vue 3 Composables)
+├── svelte/             # @flux/svelte (Svelte Stores)
+├── solid/              # @flux/solid (SolidJS Primitives)
+├── cli/                # @flux/cli (create-flux-app + Vite Plugin)
+└── conformance-tests/  # @flux/conformance-tests (Cross-adapter behavioral suite)
+playground/             # Interactive Browser REPL Playground
 ```
 
-## Documentation
+---
 
-- **[PRD.md](./PRD.md)** - Product vision and requirements
-- **[TRD.md](./TRD.md)** - Technical specifications
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture
-- **[RULES.md](./RULES.md)** - Engineering constraints
-- **[PHASES.md](./PHASES.md)** - 16-week roadmap
-- **[IMPLEMENTATION.md](./IMPLEMENTATION.md)** - Beginner's guide
-- **[docs/PHASE-0-SUMMARY.md](./docs/PHASE-0-SUMMARY.md)** - Phase 0 validation results
-- **[docs/MEMORY.md](./docs/MEMORY.md)** - Development progress tracker
+## 🎮 Interactive REPL Playground
 
-## Getting Started
-
-### Development Setup
+Try the interactive browser-based playground to visualize token streaming repairs, component rendering, HMAC token approvals, and CRDT state synchronization:
 
 ```bash
-# Clone the repository
-git clone https://github.com/princeyadaviit/flux.git
-cd flux
-
-# Install dependencies
-pnpm install
-
-# Build packages
-pnpm build
-
-# Run tests
-pnpm test
+npm run playground
 ```
 
-### Phase 0 Experiments
+---
 
-Phase 0 validation prototypes are preserved in `experiments/`:
+## 📖 Documentation
+
+- **[Developer Guide & API Reference](./docs/GUIDE.md)** — Complete end-to-end tutorial & recipes
+- **[PRD.md](./PRD.md)** — Product requirements & vision
+- **[TRD.md](./TRD.md)** — Technical specifications & protocol design
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** — System architecture
+- **[RULES.md](./RULES.md)** — Architectural invariants & constraints
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** — Contributing guidelines & standards
+- **[docs/PHASE-4-SUMMARY.md](./docs/PHASE-4-SUMMARY.md)** — v1.0 Launch & Phase 4 summary
+- **[docs/MEMORY.md](./docs/MEMORY.md)** — Development progress tracker
+
+---
+
+## 🧪 Testing & Validation
 
 ```bash
-cd experiments
-npm install
+# Run all 120 tests across the monorepo
+npm test
 
-# Run validation spikes
-npm run test:patch-bridge    # PatchBridge convergence tests
-npm run test:token           # HMAC approval token tests
-npm run test:bundle          # Yjs bundle size analysis
-npm run test:parser          # Parser decision analysis
+# Run tests in watch mode
+npx vitest
 ```
 
-## Core Principles
+```
+ Test Files  10 passed (10)
+      Tests  120 passed (120)
+   Duration  7.58s
+```
 
-1. **Format authoring over component routing** - LLM emits declarative UI schema, not just selects components
-2. **Framework agnostic** - Vanilla TypeScript core with thin adapters
-3. **Safe by construction** - Sanitization and approval gates are architectural, not optional
-4. **Zero-config DX** - One CLI command to working app
+---
 
-## Technology Stack
+## 🗺️ Roadmap & Phase Status
 
-- **Language:** TypeScript (strict mode)
-- **Monorepo:** Turborepo
-- **State Sync:** Yjs (CRDT) + JSON Patch (RFC 6902)
-- **Sanitization:** DOMPurify
-- **Testing:** Vitest (unit), Playwright (E2E)
-- **Target Frameworks:** Vue, Svelte, SolidJS (React deferred to v2)
+- ✅ **Phase 0:** Validation Spikes & Technical Decision Records
+- ✅ **Phase 1:** Bidirectional Transport Layer (`FluxTransport`, SSE, WebSocket)
+- ✅ **Phase 2:** State Synchronization Engine (`FluxStore` with Yjs CRDT + `PatchBridge`)
+- ✅ **Phase 3:** Generative UI Renderer, Sanitizer, HITL & Framework Adapters (Vue, Svelte, Solid)
+- ✅ **Phase 4:** CLI Scaffolding Tool (`create-flux-app`), Vite Plugin, Playground & v1.0 Launch
+- 🔜 **Phase 5 (Post-v1):** React Adapter (`@flux/react`), WebCrypto Asymmetric Keys, Multi-Region Relays
 
-## Non-Goals (v1.0)
-
-- React adapter (strategic positioning - see PRD §7)
-- Multi-agent orchestration
-- Hosted/managed backend service
-- Mobile (React Native / native) targets
-
-## Contributing
-
-This project is in active development. Contributions are welcome once Phase 1 is complete.
-
-Before contributing:
-1. Read **[RULES.md](./RULES.md)** - Non-negotiable constraints
-2. Review **[PHASES.md](./PHASES.md)** - Current roadmap
-3. Check **[docs/MEMORY.md](./docs/MEMORY.md)** - Development progress
+---
 
 ## License
 
 MIT License - see [LICENSE](./LICENSE) for details.
-
-## Roadmap
-
-- **Phase 0 (Complete):** Validation spikes
-- **Phase 1 (Complete):** Bidirectional transport layer
-- **Phase 2 (Complete):** State synchronization with Yjs CRDT
-- **Phase 3 (Complete):** Generative UI renderer, HITL & framework adapters
-- **Phase 4 (Weeks 13-16):** CLI, bundler plugins, docs, launch ← *We are here*
-- **Phase 5 (Post-v1):** Hardening, ecosystem growth
-
----
 
 **Built with ❤️ by the Flux Team**

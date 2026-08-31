@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>__PROJECT_NAME__ - Powered by Flux</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Flux + Vanilla TypeScript</h1>
+      <p id="status">Status: Connecting... 🟡</p>
+
+      <section class="card">
+        <h3>Streaming Output:</h3>
+        <pre id="output">Waiting for agent tokens...</pre>
+      </section>
+
+      <div id="renderer-mount"></div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
