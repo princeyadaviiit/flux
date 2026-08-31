@@ -1,11 +1,16 @@
 {
   "name": "create-fluxmesh",
-  "version": "0.1.0",
-  "description": "Scaffold a new Flux Agentic AI web application with your framework of choice",
+  "version": "0.1.1",
+  "description": "Scaffolding tool for Flux Agentic AI web applications",
+  "main": "bin/index.js",
   "bin": {
     "create-fluxmesh": "./bin/index.js",
     "create-flux": "./bin/index.js",
-    "create-fluxmesh-app": "./bin/index.js"
+    "create-fluxmesh-app": "./bin/index.js",
+    "create-flux-app": "./bin/index.js"
+  },
+  "scripts": {
+    "test": "vitest"
   },
   "keywords": [
     "create-fluxmesh",

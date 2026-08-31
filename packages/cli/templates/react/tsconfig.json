@@ -6,12 +6,7 @@
     "jsx": "react-jsx",
     "strict": true,
     "types": ["vite/client"],
-    "skipLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@fluxmesh/react": ["../../../../react/src/index.ts"],
-      "@fluxmesh/core": ["../../../../core/src/index.ts"]
-    }
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }

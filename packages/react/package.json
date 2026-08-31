@@ -1,16 +1,30 @@
 {
   "name": "@fluxmesh/react",
-  "version": "0.1.0",
-  "description": "React 18/19 adapter for Flux Agentic AI web applications",
+  "version": "0.1.1",
+  "description": "React 18/19 hooks adapter for Flux AI Agent streaming and generative UI",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
   "scripts": {
     "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf dist",
     "test": "vitest"
   },
   "dependencies": {
-    "@fluxmesh/core": "*"
+    "@fluxmesh/core": "^0.1.1"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
