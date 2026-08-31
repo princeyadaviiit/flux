@@ -4,7 +4,7 @@ import {
   StreamingUIParser,
   RenderDescriptor,
   ComponentRegistration,
-} from '@flux/core';
+} from '@fluxmesh/core';
 
 export interface UseFluxRendererReturn {
   descriptor: RenderDescriptor | null;

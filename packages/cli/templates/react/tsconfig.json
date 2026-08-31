@@ -9,8 +9,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@flux/react": ["../../../../react/src/index.ts"],
-      "@flux/core": ["../../../../core/src/index.ts"]
+      "@fluxmesh/react": ["../../../../react/src/index.ts"],
+      "@fluxmesh/core": ["../../../../core/src/index.ts"]
     }
   },
   "include": ["src/**/*"]

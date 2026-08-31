@@ -4,7 +4,7 @@
  */
 
 import { writable, Readable } from 'svelte/store';
-import { FluxRenderer, StreamingUIParser, RenderDescriptor } from '@flux/core';
+import { FluxRenderer, StreamingUIParser, RenderDescriptor } from '@fluxmesh/core';
 
 export interface FluxRendererStore {
   currentRender: Readable<RenderDescriptor | null>;

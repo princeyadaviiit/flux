@@ -1,5 +1,5 @@
 {
-  "name": "@flux/core",
+  "name": "@fluxmesh/core",
   "version": "0.1.0",
   "description": "Framework-agnostic core library for building Agentic AI-Native web applications",
   "main": "./dist/index.js",

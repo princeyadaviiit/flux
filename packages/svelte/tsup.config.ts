@@ -8,5 +8,5 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   treeshake: true,
-  external: ['svelte', 'svelte/store', '@flux/core'],
+  external: ['svelte', 'svelte/store', '@fluxmesh/core'],
 });

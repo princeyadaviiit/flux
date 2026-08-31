@@ -4,7 +4,7 @@
  */
 
 import { writable, Readable } from 'svelte/store';
-import { FluxTransport, FluxTransportOptions, FluxEnvelope, ApprovalToken } from '@flux/core';
+import { FluxTransport, FluxTransportOptions, FluxEnvelope, ApprovalToken } from '@fluxmesh/core';
 
 export interface FluxAgentStore {
   isConnected: Readable<boolean>;

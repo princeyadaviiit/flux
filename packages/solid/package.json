@@ -1,5 +1,5 @@
 {
-  "name": "@flux/solid",
+  "name": "@fluxmesh/solid",
   "version": "0.1.0",
   "description": "SolidJS reactive primitives and components for Flux",
   "main": "./dist/index.js",
@@ -18,7 +18,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@flux/core": "*"
+    "@fluxmesh/core": "*"
   },
   "peerDependencies": {
     "solid-js": "^1.8.0"

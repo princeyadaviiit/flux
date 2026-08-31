@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { fluxPlugin } from '@flux/cli';
+import { fluxPlugin } from '@fluxmesh/cli';
 
 export default defineConfig({
   plugins: [

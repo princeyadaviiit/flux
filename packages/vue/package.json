@@ -1,5 +1,5 @@
 {
-  "name": "@flux/vue",
+  "name": "@fluxmesh/vue",
   "version": "0.1.0",
   "description": "Vue 3 reactive composables and components for Flux",
   "main": "./dist/index.js",
@@ -18,7 +18,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@flux/core": "*"
+    "@fluxmesh/core": "*"
   },
   "peerDependencies": {
     "vue": "^3.3.0"

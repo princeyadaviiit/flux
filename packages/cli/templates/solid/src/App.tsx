@@ -1,4 +1,4 @@
-import { createFluxAgent } from '@flux/solid';
+import { createFluxAgent } from '@fluxmesh/solid';
 import { Show } from 'solid-js';
 
 export function App() {

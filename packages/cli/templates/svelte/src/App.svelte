@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createFluxAgent } from '@flux/svelte';
+  import { createFluxAgent } from '@fluxmesh/svelte';
 
   const { isConnected, streamingText, pendingApproval, approve, reject } = createFluxAgent({
     sseUrl: 'http://localhost:5173/api/flux/events',

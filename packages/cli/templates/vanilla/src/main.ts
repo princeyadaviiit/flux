@@ -1,4 +1,4 @@
-import { FluxTransport, StreamingUIParser, FluxRenderer, sanitize, FluxEnvelope } from '@flux/core';
+import { FluxTransport, StreamingUIParser, FluxRenderer, sanitize, FluxEnvelope } from '@fluxmesh/core';
 
 const statusEl = document.getElementById('status')!;
 const outputEl = document.getElementById('output')!;

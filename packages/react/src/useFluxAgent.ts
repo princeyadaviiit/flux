@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { FluxTransport, FluxTransportOptions, FluxEnvelope, ApprovalToken, TransportState } from '@flux/core';
+import { FluxTransport, FluxTransportOptions, FluxEnvelope, ApprovalToken, TransportState } from '@fluxmesh/core';
 
 export interface UseFluxAgentOptions extends FluxTransportOptions {
   autoConnect?: boolean;

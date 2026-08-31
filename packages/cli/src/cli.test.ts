@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as os from 'os';
 import { scaffoldProject, getAvailableTemplates, fluxPlugin } from './index';
 
-describe('@flux/cli & Scaffolding Engine', () => {
+describe('@fluxmesh/cli & Scaffolding Engine', () => {
   const tempDirs: string[] = [];
 
   function createTempDir(prefix: string): string {
@@ -48,7 +48,7 @@ describe('@flux/cli & Scaffolding Engine', () => {
 
     const pkg = JSON.parse(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf8'));
     expect(pkg.name).toBe('my-test-react-app');
-    expect(pkg.dependencies['@flux/react']).toBeDefined();
+    expect(pkg.dependencies['@fluxmesh/react']).toBeDefined();
   });
 
   it('scaffolds a Vue project correctly', () => {
@@ -67,7 +67,7 @@ describe('@flux/cli & Scaffolding Engine', () => {
 
     const pkg = JSON.parse(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf8'));
     expect(pkg.name).toBe('my-test-vue-app');
-    expect(pkg.dependencies['@flux/vue']).toBeDefined();
+    expect(pkg.dependencies['@fluxmesh/vue']).toBeDefined();
   });
 
   it('scaffolds a Svelte project correctly', () => {
@@ -84,7 +84,7 @@ describe('@flux/cli & Scaffolding Engine', () => {
 
     const pkg = JSON.parse(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf8'));
     expect(pkg.name).toBe('my-test-svelte-app');
-    expect(pkg.dependencies['@flux/svelte']).toBeDefined();
+    expect(pkg.dependencies['@fluxmesh/svelte']).toBeDefined();
   });
 
   it('scaffolds a Solid project correctly', () => {
@@ -101,7 +101,7 @@ describe('@flux/cli & Scaffolding Engine', () => {
 
     const pkg = JSON.parse(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf8'));
     expect(pkg.name).toBe('my-test-solid-app');
-    expect(pkg.dependencies['@flux/solid']).toBeDefined();
+    expect(pkg.dependencies['@fluxmesh/solid']).toBeDefined();
   });
 
   it('scaffolds a Vanilla TS project correctly', () => {
@@ -119,7 +119,7 @@ describe('@flux/cli & Scaffolding Engine', () => {
 
     const pkg = JSON.parse(fs.readFileSync(path.join(targetDir, 'package.json'), 'utf8'));
     expect(pkg.name).toBe('my-test-vanilla-app');
-    expect(pkg.dependencies['@flux/core']).toBeDefined();
+    expect(pkg.dependencies['@fluxmesh/core']).toBeDefined();
   });
 
   it('rejects invalid template types', () => {

@@ -1,13 +1,16 @@
 {
-  "name": "create-flux",
+  "name": "create-fluxmesh",
   "version": "0.1.0",
   "description": "Scaffold a new Flux Agentic AI web application with your framework of choice",
   "bin": {
+    "create-fluxmesh": "./bin/index.js",
     "create-flux": "./bin/index.js",
-    "create-flux-app": "./bin/index.js"
+    "create-fluxmesh-app": "./bin/index.js"
   },
   "keywords": [
+    "create-fluxmesh",
     "create-flux",
+    "fluxmesh",
     "flux",
     "ai-agent",
     "scaffolding",
@@ -16,7 +19,7 @@
   "author": "Flux Team",
   "license": "MIT",
   "dependencies": {
-    "@flux/cli": "^0.1.0"
+    "@fluxmesh/cli": "^0.1.0"
   },
   "files": [
     "bin"

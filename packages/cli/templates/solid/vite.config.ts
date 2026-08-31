@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-import { fluxPlugin } from '@flux/cli';
+import { fluxPlugin } from '@fluxmesh/cli';
 
 export default defineConfig({
   plugins: [

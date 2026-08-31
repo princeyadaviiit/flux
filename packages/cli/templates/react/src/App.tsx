@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFluxAgent } from '@flux/react';
+import { useFluxAgent } from '@fluxmesh/react';
 
 export default function App() {
   const { isConnected, streamingText, pendingApproval, approve, reject } = useFluxAgent({

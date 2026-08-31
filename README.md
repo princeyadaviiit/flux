@@ -1,4 +1,4 @@
-# Flux
+# Flux (FluxMesh)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Release: v1.1 Production & Hardened](https://img.shields.io/badge/Release-v1.1%20Hardened-green.svg)]()
@@ -19,14 +19,14 @@ Scaffold a new Flux application with your framework of choice:
 
 ```bash
 # Interactive scaffolding
-npm create flux@latest
+npm create fluxmesh@latest
 
 # Or specify project name and template directly
-npm create flux@latest my-app --template react
-npm create flux@latest my-app --template vue
-npm create flux@latest my-app --template svelte
-npm create flux@latest my-app --template solid
-npm create flux@latest my-app --template vanilla
+npm create fluxmesh@latest my-app --template react
+npm create fluxmesh@latest my-app --template vue
+npm create fluxmesh@latest my-app --template svelte
+npm create fluxmesh@latest my-app --template solid
+npm create fluxmesh@latest my-app --template vanilla
 
 # Start development with built-in mock agent stream
 cd my-app
@@ -40,13 +40,13 @@ npm run dev
 
 ```
 packages/
-├── core/               # @flux/core (TypeScript Core Subsystems)
-├── react/              # @flux/react (React 18/19 Hooks)
-├── vue/                # @flux/vue (Vue 3 Composables)
-├── svelte/             # @flux/svelte (Svelte Stores)
-├── solid/              # @flux/solid (SolidJS Primitives)
-├── cli/                # @flux/cli (create-flux-app + Vite Plugin)
-└── conformance-tests/  # @flux/conformance-tests (Cross-adapter behavioral suite)
+├── core/               # @fluxmesh/core (TypeScript Core Subsystems)
+├── react/              # @fluxmesh/react (React 18/19 Hooks)
+├── vue/                # @fluxmesh/vue (Vue 3 Composables)
+├── svelte/             # @fluxmesh/svelte (Svelte Stores)
+├── solid/              # @fluxmesh/solid (SolidJS Primitives)
+├── cli/                # @fluxmesh/cli (create-fluxmesh + Vite Plugin)
+└── conformance-tests/  # @fluxmesh/conformance-tests (Cross-adapter behavioral suite)
 playground/             # Interactive Browser REPL Playground
 ```
 
@@ -100,8 +100,8 @@ npx vitest
 - ✅ **Phase 1:** Bidirectional Transport Layer (`FluxTransport`, SSE, WebSocket)
 - ✅ **Phase 2:** State Synchronization Engine (`FluxStore` with Yjs CRDT + `PatchBridge`)
 - ✅ **Phase 3:** Generative UI Renderer, Sanitizer, HITL & Framework Adapters (Vue, Svelte, Solid)
-- ✅ **Phase 4:** CLI Scaffolding Tool (`create-flux-app`), Vite Plugin, Playground & v1.0 Launch
-- ✅ **Phase 5:** Hardening, React Adapter (`@flux/react`), ECDSA Asymmetric Signing (HITL v2), Stream Diagnostics Telemetry & Security Policy (v1.1)
+- ✅ **Phase 4:** CLI Scaffolding Tool (`create-fluxmesh`), Vite Plugin, Playground & v1.0 Launch
+- ✅ **Phase 5:** Hardening, React Adapter (`@fluxmesh/react`), ECDSA Asymmetric Signing (HITL v2), Stream Diagnostics Telemetry & Security Policy (v1.1)
 
 ---
 

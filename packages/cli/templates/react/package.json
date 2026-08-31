@@ -9,13 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@flux/core": "^0.1.0",
-    "@flux/react": "^0.1.0",
+    "@fluxmesh/core": "^0.1.0",
+    "@fluxmesh/react": "^0.1.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"
   },
   "devDependencies": {
-    "@flux/cli": "^0.1.0",
+    "@fluxmesh/cli": "^0.1.0",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.0",

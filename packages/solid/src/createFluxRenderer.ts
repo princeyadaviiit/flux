@@ -4,7 +4,7 @@
  */
 
 import { createSignal, Accessor } from 'solid-js';
-import { FluxRenderer, StreamingUIParser, RenderDescriptor } from '@flux/core';
+import { FluxRenderer, StreamingUIParser, RenderDescriptor } from '@fluxmesh/core';
 
 export interface CreateFluxRendererReturn {
   currentRender: Accessor<RenderDescriptor | null>;

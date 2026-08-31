@@ -8,5 +8,5 @@ export default defineConfig({
   sourcemap: true,
   clean: true,
   treeshake: true,
-  external: ['react', 'react-dom', '@flux/core'],
+  external: ['react', 'react-dom', '@fluxmesh/core'],
 });

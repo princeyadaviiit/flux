@@ -4,7 +4,7 @@
  */
 
 import { shallowRef, ref, Ref, ShallowRef } from 'vue';
-import { FluxRenderer, StreamingUIParser, RenderDescriptor } from '@flux/core';
+import { FluxRenderer, StreamingUIParser, RenderDescriptor } from '@fluxmesh/core';
 
 export interface UseFluxRendererReturn {
   currentRender: ShallowRef<RenderDescriptor | null>;

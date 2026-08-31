@@ -28,17 +28,17 @@ export async function runCLI(args: string[]): Promise<void> {
 
   try {
     if (!projectName) {
-      projectName = await question('Project name (default: my-flux-app): ');
-      projectName = projectName.trim() || 'my-flux-app';
+      projectName = await question('Project name (default: my-fluxmesh-app): ');
+      projectName = projectName.trim() || 'my-fluxmesh-app';
     }
 
     if (!templateArg || !getAvailableTemplates().includes(templateArg as TemplateType)) {
       console.log('\nSelect a framework template:');
-      console.log('  1) react    - React 18/19 + @flux/react');
-      console.log('  2) vue      - Vue 3 + @flux/vue');
-      console.log('  3) svelte   - Svelte + @flux/svelte');
-      console.log('  4) solid    - SolidJS + @flux/solid');
-      console.log('  5) vanilla  - Vanilla TypeScript + @flux/core');
+      console.log('  1) react    - React 18/19 + @fluxmesh/react');
+      console.log('  2) vue      - Vue 3 + @fluxmesh/vue');
+      console.log('  3) svelte   - Svelte + @fluxmesh/svelte');
+      console.log('  4) solid    - SolidJS + @fluxmesh/solid');
+      console.log('  5) vanilla  - Vanilla TypeScript + @fluxmesh/core');
 
       const choice = await question('Choice (1-5, default: 1): ');
       const trimmed = choice.trim();
@@ -72,10 +72,11 @@ export async function runCLI(args: string[]): Promise<void> {
 
 function printHelp(): void {
   console.log(`
-create-flux-app - Scaffolding CLI for Flux Agentic AI Applications
+create-fluxmesh - Scaffolding CLI for Flux Agentic AI Applications
 
 Usage:
-  npm create flux@latest [project-name] [options]
+  npm create fluxmesh@latest [project-name] [options]
+  npx create-fluxmesh [project-name] [options]
   npx create-flux-app [project-name] [options]
 
 Options:
@@ -83,8 +84,8 @@ Options:
   -h, --help                  Display this help message
 
 Examples:
-  npm create flux@latest my-react-app --template react
-  npm create flux@latest my-agent-app --template vue
-  npm create flux@latest my-solid-app --template solid
+  npm create fluxmesh@latest my-react-app --template react
+  npm create fluxmesh@latest my-agent-app --template vue
+  npm create fluxmesh@latest my-solid-app --template solid
 `);
 }

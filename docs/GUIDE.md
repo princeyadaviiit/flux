@@ -13,10 +13,11 @@ Welcome to the comprehensive guide for **Flux**, the framework-agnostic foundati
    - [Pillar 3: Streaming Generative UI](#pillar-3-streaming-generative-ui)
    - [Pillar 4: Safe Autonomy & HITL](#pillar-4-safe-autonomy--hitl)
 3. [Framework Adapters](#3-framework-adapters)
-   - [Vue 3 (`@flux/vue`)](#vue-3-fluxvue)
-   - [Svelte (`@flux/svelte`)](#svelte-fluxsvelte)
-   - [SolidJS (`@flux/solid`)](#solidjs-fluxsolid)
-   - [Vanilla TypeScript (`@flux/core`)](#vanilla-typescript-fluxcore)
+   - [React (`@fluxmesh/react`)](#react-fluxmeshreact)
+   - [Vue 3 (`@fluxmesh/vue`)](#vue-3-fluxmeshvue)
+   - [Svelte (`@fluxmesh/svelte`)](#svelte-fluxmeshsvelte)
+   - [SolidJS (`@fluxmesh/solid`)](#solidjs-fluxmeshsolid)
+   - [Vanilla TypeScript (`@fluxmesh/core`)](#vanilla-typescript-fluxmeshcore)
 4. [Vite Bundler Plugin](#4-vite-bundler-plugin)
 5. [Security Best Practices](#5-security-best-practices)
 
@@ -24,17 +25,18 @@ Welcome to the comprehensive guide for **Flux**, the framework-agnostic foundati
 
 ## 1. Quick Start
 
-Create a new Flux application in under 2 minutes using `@flux/cli`:
+Create a new Flux application in under 2 minutes using `@fluxmesh/cli`:
 
 ```bash
 # Scaffolding with interactive prompts
-npm create flux@latest
+npm create fluxmesh@latest
 
 # Or specify project name and framework template directly
-npm create flux@latest my-agent-app --template vue
-npm create flux@latest my-agent-app --template svelte
-npm create flux@latest my-agent-app --template solid
-npm create flux@latest my-agent-app --template vanilla
+npm create fluxmesh@latest my-agent-app --template react
+npm create fluxmesh@latest my-agent-app --template vue
+npm create fluxmesh@latest my-agent-app --template svelte
+npm create fluxmesh@latest my-agent-app --template solid
+npm create fluxmesh@latest my-agent-app --template vanilla
 
 # Start development server with simulated mock agent
 cd my-agent-app

@@ -1,5 +1,5 @@
 {
-  "name": "@flux/conformance-tests",
+  "name": "@fluxmesh/conformance-tests",
   "version": "0.1.0",
   "private": true,
   "description": "Shared behavioral conformance test suite for all Flux adapters",
@@ -9,10 +9,11 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@flux/core": "*",
-    "@flux/vue": "*",
-    "@flux/svelte": "*",
-    "@flux/solid": "*"
+    "@fluxmesh/core": "*",
+    "@fluxmesh/vue": "*",
+    "@fluxmesh/svelte": "*",
+    "@fluxmesh/solid": "*",
+    "@fluxmesh/react": "*"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

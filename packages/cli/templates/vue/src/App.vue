@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFluxAgent } from '@flux/vue';
+import { useFluxAgent } from '@fluxmesh/vue';
 
 const { isConnected, streamingText, pendingApproval, approve, reject } = useFluxAgent({
   sseUrl: 'http://localhost:5173/api/flux/events',

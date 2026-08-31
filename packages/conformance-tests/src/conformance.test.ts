@@ -5,11 +5,11 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { FluxRenderer, StreamingUIParser, ApprovalTokenManager, sanitize } from '@flux/core';
-import { useFluxRenderer, useFluxAgent } from '@flux/vue';
-import { createFluxRenderer as createSvelteRenderer, createFluxAgent as createSvelteAgent } from '@flux/svelte';
-import { createFluxRenderer as createSolidRenderer, createFluxAgent as createSolidAgent } from '@flux/solid';
-import { useFluxRenderer as useReactRenderer, useFluxAgent as useReactAgent } from '@flux/react';
+import { FluxRenderer, StreamingUIParser, ApprovalTokenManager, sanitize } from '@fluxmesh/core';
+import { useFluxRenderer, useFluxAgent } from '@fluxmesh/vue';
+import { createFluxRenderer as createSvelteRenderer, createFluxAgent as createSvelteAgent } from '@fluxmesh/svelte';
+import { createFluxRenderer as createSolidRenderer, createFluxAgent as createSolidAgent } from '@fluxmesh/solid';
+import { useFluxRenderer as useReactRenderer, useFluxAgent as useReactAgent } from '@fluxmesh/react';
 
 describe('Shared Conformance Suite: Core Behavioral Guarantees', () => {
   it('CR-1: StreamingUIParser progressively repairs partial JSON without throwing', () => {

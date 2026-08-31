@@ -1,13 +1,15 @@
 {
-  "name": "@flux/cli",
+  "name": "@fluxmesh/cli",
   "version": "0.1.0",
   "description": "Scaffolding CLI and bundler plugins for Flux Agentic AI web applications",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": {
-    "create-flux-app": "./bin/index.js",
-    "create-flux": "./bin/index.js"
+    "create-fluxmesh": "./bin/index.js",
+    "create-flux": "./bin/index.js",
+    "create-fluxmesh-app": "./bin/index.js",
+    "create-flux-app": "./bin/index.js"
   },
   "scripts": {
     "build": "tsup",
@@ -15,6 +17,7 @@
   },
   "keywords": [
     "flux",
+    "fluxmesh",
     "ai-agent",
     "scaffolding",
     "cli",
@@ -23,7 +26,7 @@
   "author": "Flux Team",
   "license": "MIT",
   "dependencies": {
-    "@flux/core": "*"
+    "@fluxmesh/core": "*"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

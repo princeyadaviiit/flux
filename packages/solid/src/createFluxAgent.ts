@@ -4,7 +4,7 @@
  */
 
 import { createSignal, onMount, onCleanup, Accessor } from 'solid-js';
-import { FluxTransport, FluxTransportOptions, FluxEnvelope, ApprovalToken, TransportState } from '@flux/core';
+import { FluxTransport, FluxTransportOptions, FluxEnvelope, ApprovalToken, TransportState } from '@fluxmesh/core';
 
 export interface CreateFluxAgentOptions extends FluxTransportOptions {
   autoConnect?: boolean;

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
-import { fluxPlugin } from '@flux/cli';
+import { fluxPlugin } from '@fluxmesh/cli';
 
 export default defineConfig({
   plugins: [

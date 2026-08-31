@@ -1,5 +1,5 @@
 {
-  "name": "@flux/react",
+  "name": "@fluxmesh/react",
   "version": "0.1.0",
   "description": "React 18/19 adapter for Flux Agentic AI web applications",
   "main": "./dist/index.js",
@@ -10,7 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@flux/core": "*"
+    "@fluxmesh/core": "*"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
