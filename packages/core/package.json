@@ -54,5 +54,8 @@
     "streaming"
   ],
   "author": "Flux Team",
-  "license": "MIT"
+  "license": "MIT",
+  "files": [
+    "dist"
+  ]
 }
