@@ -110,7 +110,7 @@ describe('FluxRenderer', () => {
     expect(descriptor?.props.summary).not.toContain('<script>');
     expect(descriptor?.props.summary).toContain('<p>Intro</p>');
     expect(descriptor?.props.content).not.toContain('onclick');
-    expect(descriptor?.props.content).toContain('<b>Click</b>');
+    expect(descriptor?.props.content).toMatch(/<b\s*>Click<\/b>/);
   });
 
   it('should pipe StreamingUIParser stream into FluxRenderer', () => {

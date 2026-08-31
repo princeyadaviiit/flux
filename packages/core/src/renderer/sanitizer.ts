@@ -101,7 +101,8 @@ export function sanitize(dirty: string, options?: SanitizeOptions): string {
   }
 
   const purifier = getPurifyInstance();
-  return purifier.sanitize(dirty, config);
+  const cleaned = purifier.sanitize(dirty, config);
+  return typeof cleaned === 'string' ? cleaned.replace(/<([a-zA-Z0-9]+)\s+>/g, '<$1>') : cleaned;
 }
 
 /**

@@ -76,6 +76,6 @@ describe('Sanitizer Security Tests', () => {
     expect(sanitized.content).not.toContain('<script>');
     expect(sanitized.content).toContain('<p>Safe</p>');
     expect(sanitized.description).not.toContain('onclick');
-    expect(sanitized.description).toContain('<b>Desc</b>');
+    expect(sanitized.description).toMatch(/<b\s*>Desc<\/b>/);
   });
 });
