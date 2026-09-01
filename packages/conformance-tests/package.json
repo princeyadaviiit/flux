@@ -1,6 +1,6 @@
 {
   "name": "@fluxmesh/conformance-tests",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Shared behavioral conformance test suite for all Flux adapters",
   "main": "./dist/index.js",

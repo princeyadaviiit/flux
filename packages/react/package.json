@@ -1,6 +1,6 @@
 {
   "name": "@fluxmesh/react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "React 18/19 hooks adapter for Flux AI Agent streaming and generative UI",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -42,5 +42,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
