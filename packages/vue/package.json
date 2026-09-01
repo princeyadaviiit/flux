@@ -1,6 +1,6 @@
 {
   "name": "@fluxmesh/vue",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Vue 3 composables for Flux Agentic AI web applications",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -24,7 +24,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@fluxmesh/core": "^0.1.1"
+    "@fluxmesh/core": "^0.1.3"
   },
   "peerDependencies": {
     "vue": "^3.3.0"

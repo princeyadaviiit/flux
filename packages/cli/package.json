@@ -1,6 +1,6 @@
 {
   "name": "@fluxmesh/cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Scaffolding CLI and bundler plugins for Flux Agentic AI web applications",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
